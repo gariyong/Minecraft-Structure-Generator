@@ -1,3 +1,5 @@
+import torch
+
 # torchvision 안에 있는 데이터셋 관련 기능
 from torchvision import datasets, transforms
 
@@ -95,8 +97,9 @@ def get_dataloaders(
     val_size = len(dataset) - train_size
 
     train_dataset, val_dataset = random_split(
-        dataset,
-        [train_size, val_size]
+    dataset,
+    [train_size, val_size],
+    generator=torch.Generator().manual_seed(42)
     )
 
     # Train / Validation 각각 다른 Transform 적용
