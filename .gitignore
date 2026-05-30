@@ -1,0 +1,23 @@
+# Python Cache
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+.venv/
+
+# VSCode
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Future Output Files
+outputs/
+
+# Future Model Files
+models/
+
+# Jupyter
+.ipynb_checkpoints/
