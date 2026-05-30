@@ -112,7 +112,7 @@ class BuildingClassifier(nn.Module):
         # 작은 은닉층 64개의 특징 >> 32개의 특징
         nn.Linear(64, 32),
         nn.ReLU(),
-        
+
         # 최종 출력
         #
         # Castle

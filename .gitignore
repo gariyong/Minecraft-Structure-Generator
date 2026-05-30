@@ -21,3 +21,6 @@ models/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Trained Models
+*.pth
