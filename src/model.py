@@ -49,6 +49,9 @@ class BuildingClassifier(nn.Module):
                 padding=1
             ),
 
+            # Batch Normalization
+            nn.BatchNorm2d(16),
+
             # 음수 제거
             nn.ReLU(),
 
@@ -73,6 +76,8 @@ class BuildingClassifier(nn.Module):
                 padding=1
             ),
 
+            nn.BatchNorm2d(32),
+
             nn.ReLU(),
 
             nn.MaxPool2d(kernel_size=2)
@@ -95,6 +100,8 @@ class BuildingClassifier(nn.Module):
                 padding=1
             ),
 
+            nn.BatchNorm2d(64),
+            
             nn.ReLU(),
 
             nn.MaxPool2d(kernel_size=2)
