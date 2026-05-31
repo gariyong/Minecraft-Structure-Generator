@@ -1,0 +1,9 @@
+name: StructurePlugin
+version: 1.0
+main: com.aporia.Main
+api-version: '1.21'
+
+commands:
+  structure:
+    description: Load structure
+    usage: /structure

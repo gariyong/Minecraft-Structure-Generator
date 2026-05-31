@@ -264,8 +264,8 @@ def visualize_tower_slice():
 
 if __name__ == "__main__":
 
-    from blueprint_generator import generate_blueprint
-    from layout_generator import generate_castle_layout
+    from src.generation.blueprint_generator import generate_blueprint
+    from src.generation.layout_generator import generate_castle_layout
 
     print()
     print("Castle 생성 테스트")

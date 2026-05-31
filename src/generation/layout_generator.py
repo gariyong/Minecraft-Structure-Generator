@@ -52,3 +52,56 @@ def generate_castle_layout(blueprint):
     }
 
     return layout
+
+def generate_village_layout(blueprint):
+
+    size = 40
+
+    layout = {
+
+        "size": size,
+
+        "houses": [
+
+            (10, 10),
+            (30, 10),
+
+            (10, 30),
+            (30, 30),
+
+            (20, 35)
+        ],
+
+        "plaza": (
+            size // 2,
+            size // 2
+        )
+    }
+
+    return layout
+
+def generate_dungeon_layout(blueprint):
+
+    size = 40
+
+    layout = {
+
+        "size": size,
+
+        "rooms": [
+
+            # 입구 방
+            (20, 35),
+
+            # 중앙 홀
+            (20, 20),
+
+            # 좌측 방
+            (10, 10),
+
+            # 우측 방
+            (30, 10)
+        ]
+    }
+
+    return layout

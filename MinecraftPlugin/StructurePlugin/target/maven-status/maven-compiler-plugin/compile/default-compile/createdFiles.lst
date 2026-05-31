@@ -1,0 +1,5 @@
+com\aporia\Main.class
+com\aporia\structure\StructureLoader$1.class
+com\aporia\commands\StructureCommand.class
+com\aporia\structure\StructureLoader.class
+com\aporia\structure\BlockData.class

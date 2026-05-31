@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 import torch
 from PIL import Image
@@ -13,16 +14,21 @@ CLASSES = [
     "village"
 ]
 
+# 모델 경로
+MODEL_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "models"
+    / "best_model.pth"
+)
 
 # ----------------------------------
 # 모델 로드
 # ----------------------------------
-
 model = BuildingClassifier()
 
 model.load_state_dict(
     torch.load(
-        "best_model.pth",
+        MODEL_PATH,
         map_location="cpu"
     )
 )

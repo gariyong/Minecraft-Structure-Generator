@@ -1,5 +1,5 @@
-from blueprint_generator import generate_blueprint
-from layout_generator import generate_castle_layout
+from src.generation.blueprint_generator import generate_blueprint
+from src.generation.layout_generator import generate_castle_layout
 
 
 # ==========================================

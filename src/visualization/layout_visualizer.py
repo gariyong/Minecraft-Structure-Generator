@@ -51,8 +51,8 @@ def visualize_castle(layout):
 
 if __name__ == "__main__":
 
-    from blueprint_generator import generate_blueprint
-    from layout_generator import generate_castle_layout
+    from src.generation.blueprint_generator import generate_blueprint
+    from src.generation.layout_generator import generate_castle_layout
 
     blueprint = generate_blueprint(
         "castle"
