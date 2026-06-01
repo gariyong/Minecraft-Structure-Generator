@@ -1,4 +1,4 @@
-# Computer Vision Based Minecraft Structure Generator
+# Minecraft Structure Generator
 
 ## 프로젝트 소개
 
