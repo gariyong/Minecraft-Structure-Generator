@@ -7,3 +7,7 @@ commands:
   structure:
     description: Load structure
     usage: /structure
+
+  generatecastle:
+    description: Generate AI Castle
+    usage: /generatecastle

@@ -15,12 +15,11 @@ WALL_HEIGHT = 5
 # Tower Generator
 # ==================================================
 
-def generate_tower(x, y, z):
+def generate_tower(x, y, z, height):
 
     blocks = []
 
     radius = TOWER_RADIUS
-    height = TOWER_HEIGHT
 
     for dy in range(height):
 
@@ -47,15 +46,15 @@ def generate_tower(x, y, z):
 # Keep Generator
 # ==================================================
 
-def generate_keep(x, y, z):
+def generate_keep(x, y, z, keep_size, keep_height):
 
     blocks = []
 
-    for dx in range(KEEP_SIZE):
+    for dx in range(keep_size):
 
-        for dz in range(KEEP_SIZE):
+        for dz in range(keep_size):
 
-            for dy in range(KEEP_HEIGHT):
+            for dy in range(keep_height):
 
                 blocks.append(
                     (
@@ -75,12 +74,11 @@ def generate_keep(x, y, z):
 
 def generate_wall(
         x1, z1,
-        x2, z2
+        x2, z2,
+        wall_height
 ):
 
     blocks = []
-
-    wall_height = WALL_HEIGHT
 
     # 가로 벽
     if z1 == z2:
@@ -132,6 +130,10 @@ def generate_castle(layout):
     castle_blocks = []
 
     size = layout["size"]
+    tower_height = layout["tower_height"]
+    wall_height = layout["wall_height"]
+    keep_size = layout["keep_size"]
+    keep_height = layout["keep_height"]
 
     # ------------------------
     # Tower 생성
@@ -142,7 +144,8 @@ def generate_castle(layout):
         tower_blocks = generate_tower(
             tower_x,
             0,
-            tower_z
+            tower_z,
+            layout["tower_height"]
         )
 
         castle_blocks.extend(
@@ -158,7 +161,8 @@ def generate_castle(layout):
             TOWER_RADIUS,
             TOWER_RADIUS,
             size - TOWER_RADIUS,
-            TOWER_RADIUS
+            TOWER_RADIUS,
+            wall_height
         )
     )
 
@@ -167,7 +171,8 @@ def generate_castle(layout):
             size - TOWER_RADIUS,
             TOWER_RADIUS,
             size - TOWER_RADIUS,
-            size - TOWER_RADIUS
+            size - TOWER_RADIUS,
+            wall_height
         )
     )
 
@@ -176,7 +181,8 @@ def generate_castle(layout):
             size - TOWER_RADIUS,
             size - TOWER_RADIUS,
             TOWER_RADIUS,
-            size - TOWER_RADIUS
+            size - TOWER_RADIUS,
+            wall_height
         )
     )
 
@@ -185,7 +191,8 @@ def generate_castle(layout):
             TOWER_RADIUS,
             size - TOWER_RADIUS,
             TOWER_RADIUS,
-            TOWER_RADIUS
+            TOWER_RADIUS,
+            wall_height
         )
     )
 
@@ -208,7 +215,7 @@ def generate_castle(layout):
             <= block[0]
             <= gate_x + gate_width // 2
             and
-            block[1] < WALL_HEIGHT
+            block[1] < wall_height
 
         )
 
@@ -221,9 +228,11 @@ def generate_castle(layout):
     keep_x, keep_z = layout["keep"]
 
     keep_blocks = generate_keep(
-        keep_x - KEEP_SIZE // 2,
+        keep_x - keep_size // 2,
         0,
-        keep_z - KEEP_SIZE // 2
+        keep_z - keep_size // 2,
+        keep_size,
+        keep_height
     )
 
     castle_blocks.extend(

@@ -1,7 +1,6 @@
 from src.generation.blueprint_generator import generate_blueprint
 from src.generation.layout_generator import generate_castle_layout
 
-
 # ==========================================
 # Layout 기반 시각화
 # ==========================================
@@ -93,3 +92,6 @@ for dz in range(-5, 5):
 
 for row in grid:
     print("".join(row))
+
+print(blueprint)
+print(layout)

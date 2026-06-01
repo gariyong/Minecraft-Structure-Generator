@@ -13,15 +13,43 @@ def generate_castle_layout(blueprint):
     else:
         size = 40
 
+    tower_count = blueprint["tower_count"]
+
     TOWER_RADIUS = 3
-    layout = {
 
-        "size": size,
+    towers = []
 
-        # 탑을 성벽 안쪽으로 이동
-        "towers": [
+    # -------------------
+    # 2 Towers
+    # -------------------
 
-            (TOWER_RADIUS, TOWER_RADIUS),
+    if tower_count == 2:
+
+        towers = [
+
+            (
+                TOWER_RADIUS,
+                TOWER_RADIUS
+            ),
+
+            (
+                size - TOWER_RADIUS,
+                TOWER_RADIUS
+            )
+        ]
+
+    # -------------------
+    # 4 Towers
+    # -------------------
+
+    elif tower_count == 4:
+
+        towers = [
+
+            (
+                TOWER_RADIUS,
+                TOWER_RADIUS
+            ),
 
             (
                 size - TOWER_RADIUS,
@@ -37,14 +65,70 @@ def generate_castle_layout(blueprint):
                 size - TOWER_RADIUS,
                 size - TOWER_RADIUS
             )
-        ],
+        ]
+
+    # -------------------
+    # 6 Towers
+    # -------------------
+
+    else:
+
+        towers = [
+
+            (
+                TOWER_RADIUS,
+                TOWER_RADIUS
+            ),
+
+            (
+                size - TOWER_RADIUS,
+                TOWER_RADIUS
+            ),
+
+            (
+                TOWER_RADIUS,
+                size - TOWER_RADIUS
+            ),
+
+            (
+                size - TOWER_RADIUS,
+                size - TOWER_RADIUS
+            ),
+
+            (
+                size // 2,
+                TOWER_RADIUS
+            ),
+
+            (
+                size // 2,
+                size - TOWER_RADIUS
+            )
+        ]
+
+    layout = {
+
+        "size": size,
+
+        "tower_height":
+            blueprint["tower_height"],
+
+        "wall_height":
+            blueprint["wall_height"],
+
+        "keep_size":
+            blueprint["keep_size"],
+
+        "keep_height":
+            blueprint["keep_height"],
+
+        "towers": towers,
 
         "keep": (
             size // 2,
             size // 2
         ),
 
-        # 게이트는 아래 중앙
         "gate": (
             size // 2,
             size - TOWER_RADIUS

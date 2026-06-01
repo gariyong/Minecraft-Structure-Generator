@@ -1,5 +1,8 @@
-com\aporia\Main.class
 com\aporia\structure\StructureLoader$1.class
+com\aporia\commands\GenerateCastleCommand.class
+com\aporia\structure\JsonStructureLoader.class
+com\aporia\Main.class
+com\aporia\structure\JsonStructureLoader$1.class
 com\aporia\commands\StructureCommand.class
 com\aporia\structure\StructureLoader.class
 com\aporia\structure\BlockData.class

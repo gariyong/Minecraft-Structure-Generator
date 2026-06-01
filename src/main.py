@@ -101,3 +101,8 @@ export_blocks_to_json(
     blocks,
     "generated_structure.json"
 )
+
+print()
+print("Blueprint")
+print(blueprint)
+print()
