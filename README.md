@@ -155,6 +155,8 @@ StructurePlugin/src/main/java/com/aporia/commands/GenerateCastleCommand.java
 * 다양한 배경 환경
 * 다양한 성 규모
 
+![](images/dataset_sample.png)
+
 이를 통해 특정 스타일에 과적합되지 않는 모델을 구축하고자 하였습니다.
 
 ---
