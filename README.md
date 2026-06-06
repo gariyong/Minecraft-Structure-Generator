@@ -21,6 +21,10 @@
 
 까지의 전체 파이프라인을 구현하는 것을 목표로 하였습니다.
 
+본 프로젝트는 공개 데이터셋을 단순 활용하는 것이 아니라, 데이터 수집, 데이터 정제, 라벨링, 모델 학습, 구조 생성, Minecraft 연동까지 전 과정을 직접 구현한 End-to-End 프로젝트입니다.
+
+단순한 객체 탐지(Object Detection)에 그치지 않고, 탐지 결과를 실제 게임 콘텐츠 생성으로 연결하는 것을 목표로 하였습니다.
+
 ---
 
 ## 시스템 구조
@@ -136,6 +140,83 @@ StructurePlugin/src/main/java/com/aporia/commands/GenerateCastleCommand.java
 
 ---
 
+# 데이터셋 구축 과정
+
+본 프로젝트에서는 프로젝트 목표에 적합한 공개 데이터셋이 존재하지 않았기 때문에 데이터셋을 직접 구축하였습니다.
+
+## 데이터 수집
+
+판타지 성(Fantasy Castle) 이미지를 다양한 출처에서 직접 수집하였습니다.
+
+수집 과정에서 다음과 같은 다양성을 확보하고자 하였습니다.
+
+* 다양한 건축 양식
+* 다양한 시점(Viewpoint)
+* 다양한 배경 환경
+* 다양한 성 규모
+
+이를 통해 특정 스타일에 과적합되지 않는 모델을 구축하고자 하였습니다.
+
+---
+
+## 데이터 정제
+
+수집된 이미지 중 다음과 같은 데이터를 제거하였습니다.
+
+* 중복 이미지
+* 해상도가 지나치게 낮은 이미지
+* 성이 명확하게 보이지 않는 이미지
+
+정제 과정을 통해 학습 데이터의 품질을 향상시켰습니다.
+
+---
+
+## YOLO 데이터셋 구축
+
+YOLO 객체 탐지를 위해 모든 이미지에 대해 직접 Bounding Box 라벨링을 수행하였습니다.
+
+### 클래스
+
+* Castle
+
+### 라벨링 방식
+
+* Manual Bounding Box Annotation
+* Roboflow 활용
+
+### 최종 데이터 수
+
+* 87 Images
+* 1 Class (Castle)
+
+모든 Bounding Box는 직접 생성하였으며, 성의 위치와 크기를 학습할 수 있도록 구성하였습니다.
+
+---
+
+## 데이터 증강(Data Augmentation)
+
+수집 가능한 판타지 성 이미지 수가 제한적이었기 때문에 모델의 일반화 성능을 향상시키기 위해 데이터 증강(Data Augmentation)을 적용하였습니다.
+
+적용한 증강 기법은 다음과 같습니다.
+
+- Horizontal Flip (좌우 반전)
+- Random Rotation (±10° 회전)
+- Brightness Adjustment
+- Contrast Adjustment
+- Saturation Adjustment
+
+이를 통해 제한된 데이터 환경에서도 다양한 형태의 성 이미지를 학습할 수 있도록 하였습니다.
+
+### 활용 목적
+
+* 과적합 방지
+* 다양한 성 형태 학습
+* 새로운 환경에 대한 일반화 성능 향상
+
+이를 통해 제한된 데이터 환경에서도 안정적인 객체 탐지가 가능하도록 하였습니다.
+
+---
+
 # 사용 기술
 
 ## Computer Vision
@@ -180,11 +261,15 @@ StructurePlugin/src/main/java/com/aporia/commands/GenerateCastleCommand.java
 
 # 프로젝트 성과
 
-* CNN 기반 이미지 분류 구현
-* YOLO 기반 객체 탐지 구현
+* 판타지 성 이미지 데이터셋 직접 구축
+* YOLO 학습용 Bounding Box 직접 라벨링
+* YOLOv8 기반 Castle Detection 모델 학습
+* Bounding Box 기반 구조 파라미터 추출
 * 이미지 기반 Blueprint 자동 생성
 * Procedural Structure Generation 구현
-* JSON 기반 Minecraft 구조물 생성
+* 11,355개 블록 규모의 Minecraft 구조물 생성
+* JSON 기반 Minecraft Structure Export
+* Python ↔ Java 연동 파이프라인 구축
 * PaperMC Plugin 연동
 * Image → Minecraft 자동 생성 파이프라인 구축
 
