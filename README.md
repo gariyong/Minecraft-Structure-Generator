@@ -146,9 +146,9 @@ StructurePlugin/src/main/java/com/aporia/commands/GenerateCastleCommand.java
 
 ## 데이터 수집
 
-판타지 성(Fantasy Castle) 이미지를 다양한 출처에서 직접 수집하였습니다.
+프로젝트 목적에 적합한 공개 데이터셋이 존재하지 않았기 때문에 판타지 성(Fantasy Castle) 이미지를 직접 수집하여 데이터셋을 구축하였습니다.
 
-수집 과정에서 다음과 같은 다양성을 확보하고자 하였습니다.
+이미지는 Pinterest에서 다양한 판타지 성 컨셉 아트 및 일러스트를 수집하였으며, 다음과 같은 다양성을 확보하고자 하였습니다.
 
 * 다양한 건축 양식
 * 다양한 시점(Viewpoint)
